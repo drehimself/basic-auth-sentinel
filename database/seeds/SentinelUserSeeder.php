@@ -14,16 +14,16 @@ class SentinelUserSeeder extends Seeder
     {
         DB::table('users')->delete();
 
-        Sentinel::create([
+        Sentinel::registerAndActivate([
             'email'    => 'user@user.com',
-            'password' => 'sentryuser',
+            'password' => 'sentineluser',
             'first_name' => 'UserFirstName',
             'last_name' => 'UserLastName',
         ]);
 
-        Sentinel::create([
+        Sentinel::registerAndActivate([
             'email'    => 'admin@admin.com',
-            'password' => 'sentryadmin',
+            'password' => 'sentineladmin',
             'first_name' => 'AdminFirstName',
             'last_name' => 'AdminLastName',
         ]);

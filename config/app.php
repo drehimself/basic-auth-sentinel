@@ -137,14 +137,16 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
-
         /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\BackendServiceProvider::class,
+
+        Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
+        Illuminate\Html\HtmlServiceProvider::class,
 
     ],
 
@@ -195,6 +197,8 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
 
         'Sentinel'  => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
+        'Form'=> Illuminate\Html\FormFacade::class,
+        'HTML'=> Illuminate\Html\HtmlFacade::class,
 
     ],
 

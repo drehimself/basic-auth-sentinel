@@ -53,8 +53,8 @@ return [
 
     'users' => [
 
-        // 'model' => 'App\User',
-        'model' => 'Cartalyst\Sentinel\Users\EloquentUser',
+        'model' => 'App\User',
+        // 'model' => 'Cartalyst\Sentinel\Users\EloquentUser',
 
     ],
 
@@ -246,7 +246,7 @@ return [
 
         'ip' => [
 
-            'interval' => 900,
+            'interval' => 90,
 
             'thresholds' => 5,
 
@@ -254,7 +254,7 @@ return [
 
         'user' => [
 
-            'interval' => 900,
+            'interval' => 90,
 
             'thresholds' => 5,
 
