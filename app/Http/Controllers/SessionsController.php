@@ -32,7 +32,6 @@ class SessionsController extends Controller
         try {
 
             if (Sentinel::authenticate($input, $request->has('remember'))) {
-                // Logged in successfully - redirect based on type of user
                 $this->redirectWhenLoggedIn();
             }
 
@@ -44,21 +43,11 @@ class SessionsController extends Controller
             return redirect()->back()->withInput()->withErrorMessage($e->getMessage());
         }
 
-
-
-        // try {
-        //     Sentinel::authenticate($input, $request->has('remember'));
-        // } catch (\Cartalyst\Sentinel\Checkpoints\UserNotFoundException $e) {
-        //     return redirect()->back()->withInput()->withErrorMessage('Invalid credentials provided');
-        // } catch (\Cartalyst\Sentinel\Checkpoints\NotActivatedException $e) {
-        //     return redirect()->back()->withInput()->withErrorMessage('User Not Activated.');
-        // }
-
-
     }
 
     protected function redirectWhenLoggedIn()
     {
+        // Logged in successfully - redirect based on type of user
         $user = Sentinel::getUser();
         $admin = Sentinel::findRoleByName('Admins');
         $users = Sentinel::findRoleByName('Users');
@@ -79,8 +68,6 @@ class SessionsController extends Controller
     public function destroy($id=null)
     {
         Sentinel::logout();
-
-        //return Redirect::home();
 
         return redirect()->route('home');
     }

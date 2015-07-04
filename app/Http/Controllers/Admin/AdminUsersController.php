@@ -20,9 +20,6 @@ class AdminUsersController extends Controller
     public function __construct(UserRepositoryInterface $user)
     {
         $this->user = $user;
-
-
-        //$this->middleware('notCurrentUser', ['only' => ['show', 'edit', 'update']]);
     }
 
     /**
@@ -87,10 +84,6 @@ class AdminUsersController extends Controller
         if (! $request->has("password")) {
             $input = $request->only('email', 'first_name', 'last_name');
 
-            // $this->adminUsersEditForm->excludeUserId($user->id)->validate($input);
-
-            // $input = array_except($input, ['account_type']);
-
             $user->fill($input)->save();
 
             $this->user->updateRole($id, $request->input('account_type'));
@@ -100,10 +93,6 @@ class AdminUsersController extends Controller
 
         } else {
             $input = $request->only('email', 'first_name', 'last_name', 'password');
-
-            // $this->adminUsersEditForm->excludeUserId($user->id)->validate($input);
-
-            // $input = array_except($input, ['account_type', 'password_confirmation']);
 
             $user->fill($input);
             $user->password = \Hash::make($request->input('password'));
